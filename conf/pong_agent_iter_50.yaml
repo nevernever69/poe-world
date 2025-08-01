@@ -1,0 +1,22 @@
+defaults:
+  - pong_agent
+  - _self_
+
+# Use 50 observations for this iteration
+obs_index: 0
+obs_index_length: 50
+
+# Only model the player to speed up
+world_model_learner:
+  obj_type: player
+
+# Reduce optimization steps
+moe:
+  n_steps: 4
+
+# Reduce agent goals and MCTS tries for a quick test run
+agent:
+  n_goals_to_achieve: 20
+mcts:
+  n_tries: 30
+recording: False

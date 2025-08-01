@@ -56,6 +56,7 @@ class Synthesizer(ABC):
 
         # Create cache
         self.cache_x = {}
+        self.api_call_counter = 0
 
     @abstractmethod
     async def a_synthesize(self, c: list[StateTransitionTriplet], **kwargs):
@@ -94,6 +95,7 @@ class Synthesizer(ABC):
         if len(to_be_prompteds) == 0:
             return []
 
+        self.api_call_counter += 1
         outputs = await self.llm.aprompt(to_be_prompteds,
                                          temperature=0,
                                          seed=self.config.seed)
@@ -1667,6 +1669,7 @@ class RestartSynthesizer(Synthesizer):
         if len(to_be_prompteds) == 0:
             return []
 
+        self.api_call_counter += 1
         outputs = await self.llm.aprompt(to_be_prompteds,
                                          temperature=0,
                                          seed=self.config.seed)

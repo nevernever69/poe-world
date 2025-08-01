@@ -1,0 +1,20 @@
+defaults:
+  - pong_agent
+  - _self_
+
+# Use all observations
+obs_index: -1
+
+# Model all objects
+world_model_learner:
+  obj_type: all
+
+# Use default optimization steps
+moe:
+  n_steps: 4
+
+# Use default agent goals and MCTS tries
+agent:
+  n_goals_to_achieve: 100
+mcts:
+  n_tries: 60

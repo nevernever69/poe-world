@@ -1,0 +1,5 @@
+defaults:
+  - pong_agent_iter_10
+  - _self_
+
+post_synthesis_mode: evaluate

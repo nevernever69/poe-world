@@ -1,0 +1,6 @@
+defaults:
+  - pong_agent_iter_50
+  - _self_
+
+post_synthesis_mode: evaluate
+recording: False

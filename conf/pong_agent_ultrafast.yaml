@@ -1,0 +1,23 @@
+defaults:
+  - pong_agent
+  - _self_
+
+# Use the absolute minimum number of observations
+obs_index: 0
+obs_index_length: 1
+
+# Only model the player to speed up
+world_model_learner:
+  obj_type: player
+
+# Reduce optimization steps
+moe:
+  n_steps: 1
+
+# Reduce agent goals and MCTS tries for the fastest possible run
+agent:
+  n_goals_to_achieve: 1
+  quick_build_graph: False
+  fast_world_update: True
+mcts:
+  n_tries: 1

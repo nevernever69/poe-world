@@ -180,6 +180,20 @@ class PoEWorldLearner(WorldModelLearner):
 
         # Step 4: Compose all object type models into a single world model
         self.world_model = WorldModel(obj_type_models, constraints)
+
+        # Log the total API calls
+        total_api_calls = 0
+        for obj_type in self.all_obj_types:
+            for synthesizer in self.obj_model_learners[obj_type].normal_synthesizers:
+                total_api_calls += synthesizer.api_call_counter
+            for synthesizer in self.obj_model_learners[obj_type].restart_synthesizers:
+                total_api_calls += synthesizer.api_call_counter
+            for synthesizer in self.obj_model_learners[obj_type].constraint_synthesizers:
+                total_api_calls += synthesizer.api_call_counter
+            for synthesizer in self.obj_model_learners[obj_type].pomdp_synthesizers:
+                total_api_calls += synthesizer.api_call_counter
+        log.info(f'Total API calls: {total_api_calls}')
+
         return self.world_model
 
     def update_world_model(self, c, fast=False, player_only=False) -> WorldModel:

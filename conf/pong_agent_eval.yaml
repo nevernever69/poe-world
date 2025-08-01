@@ -1,0 +1,5 @@
+defaults:
+  - pong_agent_ultrafast
+  - _self_
+
+post_synthesis_mode: evaluate

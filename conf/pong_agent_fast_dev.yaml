@@ -1,0 +1,21 @@
+defaults:
+  - pong_agent
+  - _self_
+
+# Use a small subset of observations to speed up model building
+obs_index: 0
+obs_index_length: 2
+
+# Only model the player to speed up
+world_model_learner:
+  obj_type: player
+
+# Reduce optimization steps
+moe:
+  n_steps: 1
+
+# Reduce agent goals and MCTS tries for a quick test run
+agent:
+  n_goals_to_achieve: 5
+mcts:
+  n_tries: 10
